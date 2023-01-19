@@ -84,6 +84,10 @@ struct FLootLockerCreateHeroRequest
 	int32 hero_id = 0;
 	UPROPERTY(BlueprintReadWrite, EditAnywhere, Category = "LootLocker | Heroes")
 	FString name;
+	UPROPERTY(BlueprintReadWrite, EditAnywhere, Category = "LootLocker | Heroes")
+	int32 asset_variation_id = 0;
+	UPROPERTY(BlueprintReadWrite, EditAnywhere, Category = "LootLocker | Heroes")
+	bool is_default = false;
 };
 
 USTRUCT(BlueprintType)
