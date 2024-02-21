@@ -98,6 +98,12 @@ void ULootLockerHttpClient::SendApi(const FString& endPoint, const FString& requ
             FJsonObjectConverter::JsonObjectStringToUStruct<FLootLockerErrorData>(response.FullTextFromServer, &response.ErrorData, 0, 0);
             LogFailedRequestInformation(response, requestType, endPoint, data);
 		}
+#if WITH_EDITOR
+		if(response.success)
+		{
+			UE_LOG(LogLootLockerGameSDK, Verbose, TEXT("Response code: %d; Response content:\n%s"), Response->GetResponseCode(), *response.FullTextFromServer);
+		}
+#endif
 		onCompleteRequest.ExecuteIfBound(response);
 	});
 	Request->ProcessRequest();
