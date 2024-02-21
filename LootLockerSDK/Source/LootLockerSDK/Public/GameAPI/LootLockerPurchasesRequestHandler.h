@@ -295,7 +295,7 @@ struct FLootLockerQuerySteamPurchaseRedemptionStatusResponse : public FLootLocke
      * The status of the steam purchase
      */
     UPROPERTY(BlueprintReadWrite, EditAnywhere, Category = "LootLocker")
-    ELootLockerSteamPurchaseRedemptionStatus Status;
+    ELootLockerSteamPurchaseRedemptionStatus Status = ELootLockerSteamPurchaseRedemptionStatus::Init;
 };
 
 /**
