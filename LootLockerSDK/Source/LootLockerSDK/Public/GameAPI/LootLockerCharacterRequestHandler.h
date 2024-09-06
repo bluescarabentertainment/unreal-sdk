@@ -129,6 +129,15 @@ struct FLootLockerEquipUniversalAssetToCharacterRequest {
 };
 
 USTRUCT(BlueprintType)
+struct FLootLockerCharacterDefaultLoadoutAsset : public FLootLockerCharacterAsset {
+	GENERATED_BODY()
+	UPROPERTY(BlueprintReadWrite, EditAnywhere, Category = "LootLocker")
+	int32 asset_id = 0;
+	UPROPERTY(BlueprintReadWrite, EditAnywhere, Category = "LootLocker")
+	int32 asset_variation_id = 0;
+};
+
+USTRUCT(BlueprintType)
 struct FLootLockerCharacterTypes : public FLootLockerHasKeyValueStorage
 {
 	GENERATED_BODY()
@@ -138,6 +147,9 @@ struct FLootLockerCharacterTypes : public FLootLockerHasKeyValueStorage
 	bool is_default = false;
 	UPROPERTY(BlueprintReadWrite, EditAnywhere, Category = "LootLocker")
 	FString name;
+	UPROPERTY(BlueprintReadWrite, EditAnywhere, Category = "LootLocker")
+	TArray<FLootLockerCharacterDefaultLoadoutAsset> default_loadout;
+	
 };
 
 USTRUCT(BlueprintType)
