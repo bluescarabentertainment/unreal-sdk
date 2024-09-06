@@ -261,8 +261,21 @@ public:
     // Miscellaneous
     static FLootLockerEndPoints GetServerTimeEndpoint;
 
+    // Friends
+    static FLootLockerEndPoints GetFriendsListEndpoint;
+    static FLootLockerEndPoints SendFriendRequestEndpoint;
+    static FLootLockerEndPoints ListIncomingFriendRequestsEndpoint;
+    static FLootLockerEndPoints ListOutgoingFriendRequestsEndpoint;
+    static FLootLockerEndPoints AcceptFriendRequestEndpoint;
+    static FLootLockerEndPoints DeclineFriendRequestEndpoint;
+    static FLootLockerEndPoints DeleteFriendEndpoint;
+    static FLootLockerEndPoints ListBlockedPlayersEndpoint;
+    static FLootLockerEndPoints BlockPlayerEndpoint;
+    static FLootLockerEndPoints UnblockPlayerEndpoint;
+    
     // Crash
     static FLootLockerEndPoints Crashes;
+
 private:
     static FString GameBaseUrl;
     static FLootLockerEndPoints InitEndpoint(const FString& Endpoint, ELootLockerHTTPMethod Method);

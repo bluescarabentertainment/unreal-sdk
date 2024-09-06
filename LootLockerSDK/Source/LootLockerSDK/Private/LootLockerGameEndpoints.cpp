@@ -229,6 +229,19 @@ FLootLockerEndPoints ULootLockerGameEndpoints::ListCatalogItemsByKey = InitEndpo
 //Miscellaneous
 FLootLockerEndPoints ULootLockerGameEndpoints::GetServerTimeEndpoint = InitEndpoint("ping", ELootLockerHTTPMethod::GET);
 
+// Friends
+FLootLockerEndPoints ULootLockerGameEndpoints::GetFriendsListEndpoint = InitEndpoint("player/friends", ELootLockerHTTPMethod::GET);
+FLootLockerEndPoints ULootLockerGameEndpoints::SendFriendRequestEndpoint = InitEndpoint("player/friends/requests", ELootLockerHTTPMethod::POST);
+FLootLockerEndPoints ULootLockerGameEndpoints::ListIncomingFriendRequestsEndpoint = InitEndpoint("player/friends/requests/incoming", ELootLockerHTTPMethod::GET);
+FLootLockerEndPoints ULootLockerGameEndpoints::ListOutgoingFriendRequestsEndpoint = InitEndpoint("player/friends/requests/outgoing", ELootLockerHTTPMethod::GET);
+FLootLockerEndPoints ULootLockerGameEndpoints::AcceptFriendRequestEndpoint = InitEndpoint("player/friends/requests/incoming/{0}/accept", ELootLockerHTTPMethod::POST);
+FLootLockerEndPoints ULootLockerGameEndpoints::DeclineFriendRequestEndpoint = InitEndpoint("player/friends/requests/incoming/{0}/decline", ELootLockerHTTPMethod::POST);
+FLootLockerEndPoints ULootLockerGameEndpoints::DeleteFriendEndpoint = InitEndpoint("player/friends/{0}", ELootLockerHTTPMethod::DELETE);
+FLootLockerEndPoints ULootLockerGameEndpoints::ListBlockedPlayersEndpoint = InitEndpoint("player/friends/blocked", ELootLockerHTTPMethod::GET);
+FLootLockerEndPoints ULootLockerGameEndpoints::BlockPlayerEndpoint = InitEndpoint("player/friends/{0}/block", ELootLockerHTTPMethod::POST);
+FLootLockerEndPoints ULootLockerGameEndpoints::UnblockPlayerEndpoint = InitEndpoint("player/friends/{0}/unblock", ELootLockerHTTPMethod::POST);
+
+
 // Crashes
 FLootLockerEndPoints ULootLockerGameEndpoints::Crashes = InitEndpoint("v1/crash", ELootLockerHTTPMethod::UPLOAD);
 

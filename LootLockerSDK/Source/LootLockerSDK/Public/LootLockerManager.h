@@ -27,6 +27,7 @@
 #include "GameAPI/LootLockerRemoteSessionRequestHandler.h"
 #include "GameAPI/LootLockerTriggerEventsRequestHandler.h"
 #include "GameAPI/LootLockerUserGeneratedContentRequestHandler.h"
+#include "GameAPI/LootLockerFriendsRequestHandler.h"
 #include "LootLockerManager.generated.h"
 
 UCLASS(Blueprintable)
@@ -917,8 +918,8 @@ public:
      * @param AssetInstanceID Desc
      * @param OnCompleteBP Delegate for handling the response
      */
-	UFUNCTION(BlueprintCallable, Category = "LootLocker Methods | Heroes")
-	static void RemoveAssetToHeroLoadout(const int32 HeroID, const int32 AssetInstanceID, const FHeroLoadoutReseponseBP& OnCompleteBP);
+    UFUNCTION(BlueprintCallable, Category = "LootLocker Methods | Heroes")
+    static void RemoveAssetToHeroLoadout(const int32 HeroID, const int32 AssetInstanceID, const FHeroLoadoutReseponseBP& OnCompleteBP);
 
     //==================================================
     //Characters
@@ -2111,4 +2112,110 @@ public:
     */
     UFUNCTION(BlueprintCallable, Category = "LootLocker Methods | Miscellaneous")
     static FString GetLastActivePlatform();
+
+    //==================================================
+    // Friends
+    //==================================================
+
+    /**
+    * Get players friendslist.
+    * https://apidog.com/apidoc/shared-ea9e8950-0d06-4d1d-9e85-00c3627c679f/api-6781927
+    *
+    * @param OnGetFriendListRequestCompleted Delegate for handling the server response.
+    */
+    UFUNCTION(BlueprintCallable, Category = "LootLocker Methods | Friends")
+    static void GetFriendList(const FPFriendsListResponseBP& OnGetFriendListRequestCompleted);
+
+    /**
+    * Send Friend Request.
+    * Will return HTTP Code: 204 and nothing more if the user exist. 
+    * https://apidog.com/apidoc/shared-ea9e8950-0d06-4d1d-9e85-00c3627c679f/api-6781927
+    *
+    * @param OnSendFriendRequestCompleted Delegate for handling the server response.
+    */
+    UFUNCTION(BlueprintCallable, Category = "LootLocker Methods | Friends")
+    static void SendFriendRequest(const FString& PlayerPublicUID, const FPSendFriendRequestResponseBP& OnSendFriendRequestCompleted);
+
+    /**
+    * List Incoming Friend Requests.
+    *  
+    * https://apidog.com/apidoc/shared-ea9e8950-0d06-4d1d-9e85-00c3627c679f/api-6781929
+    *
+    * @param OnListIncomingFriendRequestsCompleted Delegate for handling the server response.
+    */
+    UFUNCTION(BlueprintCallable, Category = "LootLocker Methods | Friends")
+    static void ListIncomingFriendRequests(const FPListIncomingFriendRequestsResponseBP& OnListIncomingFriendRequestsCompleted);
+
+    /**
+    * List Outgoing Friend Requests.
+    *  
+    * https://apidog.com/apidoc/shared-ea9e8950-0d06-4d1d-9e85-00c3627c679f/api-6781930
+    *
+    * @param OnListOutgoingFriendRequestsCompleted Delegate for handling the server response.
+    */
+    UFUNCTION(BlueprintCallable, Category = "LootLocker Methods | Friends")
+    static void ListOutgoingFriendRequests(const FPListOutgoingFriendRequestsResponseBP& OnListOutgoingFriendRequestsCompleted);
+ 
+    /**
+    * Accept Friend Request.
+    * Return HTTP Code: 204
+    * https://apidog.com/apidoc/shared-ea9e8950-0d06-4d1d-9e85-00c3627c679f/api-6781931
+    *
+    * @param OnAcceptFriendRequestCompleted Delegate for handling the server response.
+    */
+    UFUNCTION(BlueprintCallable, Category = "LootLocker Methods | Friends")
+    static void AcceptFriendRequest( const FString& PlayerID, const FPAcceptFriendRequestResponseBP& OnAcceptFriendRequestCompleted);
+
+    /**
+    * Decline Friend Request.
+    * Return HTTP Code: 204
+    * https://apidog.com/apidoc/shared-ea9e8950-0d06-4d1d-9e85-00c3627c679f/api-6781932
+    *
+    * @param OnDeclineFriendRequestCompleted Delegate for handling the server response.
+    */
+    UFUNCTION(BlueprintCallable, Category = "LootLocker Methods | Friends")
+    static void DeclineFriendRequest( const FString& PlayerID, const FPDeclineFriendRequestResponseBP& OnDeclineFriendRequestCompleted);
+  
+    /**
+    * Delete Friend.
+    * Return HTTP Code: 204
+    * https://apidog.com/apidoc/shared-ea9e8950-0d06-4d1d-9e85-00c3627c679f/api-6781933
+    *
+    * @param OnDeleteFriendCompleted Delegate for handling the server response.
+    */
+    UFUNCTION(BlueprintCallable, Category = "LootLocker Methods | Friends")
+    static void DeleteFriend( const FString& PlayerID, const FPDeleteFriendResponseBP& OnDeleteFriendCompleted);
+ 
+    /**
+    * List Blocked Players.
+    * 
+    * https://apidog.com/apidoc/shared-ea9e8950-0d06-4d1d-9e85-00c3627c679f/api-6781934
+    *
+    * @param OnListBlockedPlayersCompleted Delegate for handling the server response.
+    */
+    UFUNCTION(BlueprintCallable, Category = "LootLocker Methods | Friends")
+    static void ListBlockedPlayers( const FPListBlockedPlayersResponseBP& OnListBlockedPlayersCompleted);
+ 
+    /**
+    * Block Player.
+    * 
+    * https://apidog.com/apidoc/shared-ea9e8950-0d06-4d1d-9e85-00c3627c679f/api-6781935
+    *
+    * @param OnBlockPlayerCompleted Delegate for handling the server response.
+    */
+    UFUNCTION(BlueprintCallable, Category = "LootLocker Methods | Friends")
+    static void BlockPlayer( const FString& PlayerID, const FPBlockPlayerResponseBP& OnBlockPlayerCompleted);
+ 
+    /**
+    * Unblock Player.
+    * 
+    * https://apidog.com/apidoc/shared-ea9e8950-0d06-4d1d-9e85-00c3627c679f/api-6781936
+    *
+    * @param OnUnblockPlayerCompleted Delegate for handling the server response.
+    */
+    UFUNCTION(BlueprintCallable, Category = "LootLocker Methods | Friends")
+    static void UnblockPlayer( const FString& PlayerID, const FPUnblockPlayerResponseBP& OnUnblockPlayerCompleted);
+ 
+  
+
 };

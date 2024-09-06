@@ -971,6 +971,58 @@ void ULootLockerManager::GetServerTime(const FTimeResponseDelegateBP& OnComplete
     ULootLockerMiscellaneousRequestHandler::GetServerTime(OnCompletedRequestBP);
 }
 
-FString ULootLockerManager::GetLastActivePlatform() {
+FString ULootLockerManager::GetLastActivePlatform()
+{
     return ULootLockerMiscellaneousRequestHandler::GetLastActivePlatform();
+}
+
+// Friends
+void ULootLockerManager::GetFriendList(const FPFriendsListResponseBP& OnGetFriendListRequestCompleted)
+{
+    ULootLockerFriendsRequestHandler::GetFriendsList(OnGetFriendListRequestCompleted);
+}
+
+void ULootLockerManager::SendFriendRequest(const FString& PlayerPublicUID, const FPSendFriendRequestResponseBP& OnSendFriendRequestCompleted)
+{
+    ULootLockerFriendsRequestHandler::SendFriendRequest(PlayerPublicUID, OnSendFriendRequestCompleted);
+}
+
+void ULootLockerManager::ListIncomingFriendRequests(const FPListIncomingFriendRequestsResponseBP& OnListIncomingFriendRequestsCompleted)
+{
+    ULootLockerFriendsRequestHandler::ListIncomingFriendRequests(OnListIncomingFriendRequestsCompleted);
+}
+
+void ULootLockerManager::ListOutgoingFriendRequests( const FPListOutgoingFriendRequestsResponseBP& OnListOutgoingFriendRequestsCompleted )
+{
+    ULootLockerFriendsRequestHandler::ListOutgoingFriendRequests(OnListOutgoingFriendRequestsCompleted);
+}
+
+void ULootLockerManager::AcceptFriendRequest(const FString& PlayerID, const FPAcceptFriendRequestResponseBP& OnAcceptFriendRequestCompleted)
+{
+    ULootLockerFriendsRequestHandler::AcceptFriendRequest( PlayerID, OnAcceptFriendRequestCompleted);
+}
+
+void ULootLockerManager::DeclineFriendRequest(const FString& PlayerID, const FPDeclineFriendRequestResponseBP& OnDeclineFriendRequestCompleted)
+{
+    ULootLockerFriendsRequestHandler::DeclineFriendRequest( PlayerID, OnDeclineFriendRequestCompleted);
+}
+
+void ULootLockerManager::DeleteFriend(const FString& PlayerID, const FPDeleteFriendResponseBP& OnDeleteFriendCompleted)
+{
+    ULootLockerFriendsRequestHandler::DeleteFriend( PlayerID, OnDeleteFriendCompleted);
+}
+
+void ULootLockerManager::ListBlockedPlayers(const FPListBlockedPlayersResponseBP& OnListBlockedPlayersCompleted)
+{
+    ULootLockerFriendsRequestHandler::ListBlockedPlayers( OnListBlockedPlayersCompleted);
+}
+
+void ULootLockerManager::BlockPlayer(const FString& PlayerID,const FPBlockPlayerResponseBP& OnBlockPlayerCompleted)
+{
+    ULootLockerFriendsRequestHandler::BlockPlayer( PlayerID, OnBlockPlayerCompleted);
+}
+
+void ULootLockerManager::UnblockPlayer(const FString& PlayerID,const FPUnblockPlayerResponseBP& OnUnblockPlayerCompleted)
+{
+    ULootLockerFriendsRequestHandler::UnblockPlayer( PlayerID, OnUnblockPlayerCompleted);
 }
